@@ -7,6 +7,7 @@ export const environment = {
   google_analytics_tracking_id: "UA-260554959-3",
   // apiURL: 'https://qr.staging.cqube.samagra.io',
   apiURL: 'http://localhost:3008',
+  flaskAPI :"http://127.0.0.1:5002/flask/",
   stateCode: "NA",
   numberFormat: {
     reports: {
@@ -14,7 +15,7 @@ export const environment = {
       format: 'short'
     }
   },
-  config: "NVSK",
+  config: "VSK",
 
 };
 

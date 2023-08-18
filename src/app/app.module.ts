@@ -22,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MetadataInterceptor } from './core/interceptors/metadata-interceptor/metadata-interceptor.service';
 import { JwtInterceptor } from './utilities/jwtInterceptor';
 import { AppConfig }  from './app.config';
+import { AppsComponent } from './views/apps/apps.component';
 
 //Add this function as initiating load method first
 
@@ -31,7 +32,8 @@ function initConfig(config: AppConfig){
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    AppsComponent
    
   ],
   imports: [

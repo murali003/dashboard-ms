@@ -40,6 +40,7 @@ export class LayoutComponent implements OnInit {
   constructor(private readonly _commonService: CommonService, private renderer: Renderer2, private _router: Router, private rbac: RbacService, private _authService: AuthenticationService,
     private pdfDownloadService: PdfDownloadService, private cdr: ChangeDetectorRef) {
 
+      this.checkRbacLevel();
     if (this._router.url === '/home' || this._router.url === '/rbac') {
       this.isHome = true;
     }
@@ -96,23 +97,23 @@ export class LayoutComponent implements OnInit {
       this.rbac.getRbacDetails().subscribe((rbacDetails: any) => {
         rbacRole = rbacDetails.role;
       })
-      let menuToDisplay: IMenuItem | any = {};
-      menuToDisplay.label = "Summary Statistics";
-      menuToDisplay.path = "/summary-statistics";
-      menuToDisplay.icon = 'dashboard.png';
-      menuToDisplay.isSelected = true;
-      this.menu?.push(menuToDisplay);
-      console.log("cvbn:", { menuResult })
+      // let menuToDisplay: IMenuItem | any = {};
+      // menuToDisplay.label = "Summary Statistics";
+      // menuToDisplay.path = "/summary-statistics";
+      // menuToDisplay.icon = 'dashboard.png';
+      // menuToDisplay.isSelected = true;
+      // this.menu?.push(menuToDisplay);
+      // console.log("cvbn:", { menuResult })
+      let category = localStorage.getItem('category') === '' ? 'education' : localStorage.getItem('category');
+
       menuResult?.data?.forEach((dasboardMenu: IDashboardMenu | any) => {
-
-        if (hierarchyLevels[dasboardMenu.programID]?.includes(String(rbacRole))) {
-
-          let menuToDisplay: IMenuItem | any = {};
+        let menuToDisplay: IMenuItem | any = {};
           menuToDisplay.label = dasboardMenu.programName;
           menuToDisplay.path = dasboardMenu.navigationUrl;
           menuToDisplay.icon = dasboardMenu.imageUrl;
           menuToDisplay.isSelected = false;
 
+        if (category === 'manufacturing' || hierarchyLevels[dasboardMenu.programID]?.includes(String(rbacRole))) {
           this.menu?.push(menuToDisplay);
         }
 
@@ -226,7 +227,7 @@ export class LayoutComponent implements OnInit {
     }
     else {
       this.isHome = false;
-      this.checkRbacLevel();
+      // this.checkRbacLevel();
     }
     if (this._router.url !== '/home') {
       this.showBackBtn = true

@@ -4,17 +4,22 @@ import { LayoutComponent } from './core/components/layout/layout.component';
 import { RbacDialogComponent } from './shared/components/rbac-dialog/rbac-dialog.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { AppsComponent } from './views/apps/apps.component';
 
 var routes: Routes = [];
 
 
 routes = [
   {
-    path: '', redirectTo: `home`, pathMatch: 'full'
+    path: '', redirectTo: `apps`, pathMatch: 'full'
   },
   {
     path: '',
     loadChildren: () => import('./views/authentication/authentication.module').then(module => module.AuthenticationModule)
+  },
+  {
+    path: 'apps', component: AppsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -170,6 +175,22 @@ routes = [
         loadChildren: () =>
           import('./views/nipun-bharat/nipun-bharat.module').then(
             (module) => module.NipunBharatModule
+          ),
+        canLoad: [AuthGuard]
+      },
+      {
+        path: 'leap',
+        loadChildren: () =>
+          import('./views/leap/leap.module').then(
+            (module) => module.LeapModule
+          ),
+        canLoad: [AuthGuard]
+      },
+      {
+        path: 'alert',
+        loadChildren: () =>
+          import('./views/alerts/alerts.module').then(
+            (module) => module.AlertsModule
           ),
         canLoad: [AuthGuard]
       },

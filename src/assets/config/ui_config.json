@@ -1,13 +1,13 @@
 {
-    "dashboard_header1_title": "भारत सरकार | Government of India",
-    "dashboard_header1_image": "Flag_of_India.svg",
-    "dashboard_header2_title": "",
-    "dashboard_header2_image1": "icon.ico",
+    "dashboard_header1_title": "LEAP | Actionable Intelligence",
+    "dashboard_header1_image": "cQube_logo.jpg",
+    "dashboard_header2_title": "LEAP for Production",
+    "dashboard_header2_image1": "manufacturing.jpg",
     "dashboard_header2_image2": "",
     "loginObj": {
-        "title": "State Vidya Samiksha Kendra",
+        "title": "Leap ",
         "imageURL": "back_image.jpg",
-        "tagLine": "Shared seeing for coordinated action towards achieving outcomes and goals",
+        "tagLine": "Realtime Actionable Intillgence along with cQube's observability at scale",
         "logoURL": "cQube_logo.jpg"
     }
 }

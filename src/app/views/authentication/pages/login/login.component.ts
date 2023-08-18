@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     type userRoles = Array<{ id: number, text: string }>
 
     if (this.isLoggedIn) {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/apps'])
     }
 
     if (environment.config === 'VSK') {
@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
         // localStorage.setItem('userName', res.username)
         // localStorage.setItem('user_id', res.userId)
         this._authenticationService.startRefreshTokenTimer();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/apps']);
       },
         err => {
           this.error = true;

@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   google_analytics_tracking_id: "UA-260554959-3",
-  apiURL: 'https://qr.staging.cqube.samagra.io',
+  apiURL: 'http://localhost:3008',
   stateCode: "JH",
   numberFormat: {
     reports: {

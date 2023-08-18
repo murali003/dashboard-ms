@@ -389,3 +389,11 @@ html body {
 .sidebaractive .footer{
     width: calc(100vw - #{$app-side-nav-width} + 6rem) !important;
 }
+
+.footer {
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+ }

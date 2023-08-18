@@ -18,7 +18,7 @@ export class AuthenticationService {
   logout(): void {
     this.stopRefreshTokenTimer();
     localStorage.clear();
-    this._router.navigate(['/login']);
+    this._router.navigate(['/apps']);
   }
 
   login(inputData: any) {

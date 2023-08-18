@@ -27,6 +27,7 @@ export class GaugeComponent implements OnInit, OnChanges {
   @ViewChild('apexChart') apexChart: ChartComponent;
   public chartOptions: Partial<ChartOptions>; // for apex
   @Input() gaugeData!: any;
+  @Input() Height : number;
 
   constructor() { }
 
@@ -35,32 +36,82 @@ export class GaugeComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.gaugeData){
-      this.apexCreatChart();
+      this.apexCreateChart();
     }
   }
 
-  apexCreatChart() {
+  // apexCreatChart() {
+  //   this.chartOptions = {
+  //     series: [this.gaugeData.percentage],
+  //     chart: {
+  //       type: "radialBar",
+  //       height: 200
+  //     },
+  //     fill: {
+  //       // type: "solid",
+  //       // colors: ['rgb(0, 41, 102)'],
+  //       type: "gradient",
+  //       gradient: {
+  //         shade: "dark",
+  //         type: "vertical",
+  //         gradientToColors: ["rgb(0, 41, 102)"],
+  //         stops: [0, 100]
+  //       }
+  //     },
+  //     plotOptions: {
+  //       radialBar: {
+  //         hollow: {
+  //           size: "70",
+  //           margin: 5
+  //         },
+  //         dataLabels: {
+  //           name: {
+  //             show: false
+  //           },
+  //           value: {
+  //             color: "#111",
+  //             fontSize: "1.2rem",
+  //             show: true
+  //           }
+  //         },
+  //       }
+  //     },
+  //     stroke: {
+  //       lineCap: "round",
+  //     }
+  //   };
+  // }
+
+  apexCreateChart() {
+    const percentage = this.gaugeData.percentage;
+  
+    let color;
+    if (percentage >= 0 && percentage <= 50) {
+      color = '#FE0000';
+    } else if (percentage > 50 && percentage <= 80) {
+      color = '#F7C100';
+    } else if (percentage > 80) {
+      color = '#79B455';
+    } 
+  
     this.chartOptions = {
-      series: [this.gaugeData.percentage],
+      series: [percentage],
       chart: {
         type: "radialBar",
-        height: 200
+        height: this.Height
       },
       fill: {
-        // type: "solid",
-        // colors: ['rgb(0, 41, 102)'],
-        type: "gradient",
-        gradient: {
-          shade: "dark",
-          type: "vertical",
-          gradientToColors: ["rgb(0, 41, 102)"],
-          stops: [0, 100]
-        }
+        type: "solid",
+        colors: [color],
+      //   type: "gradient",
+      //  colors:color,
       },
       plotOptions: {
         radialBar: {
+          startAngle: -100,
+          endAngle: 100,
           hollow: {
-            size: "70",
+            size: "70%", // Adjust the size to increase or decrease the circular boundary
             margin: 5
           },
           dataLabels: {
@@ -72,12 +123,13 @@ export class GaugeComponent implements OnInit, OnChanges {
               fontSize: "1.2rem",
               show: true
             }
-          },
+          }
         }
       },
       stroke: {
-        lineCap: "round",
-      }
+        lineCap: "round"
+      },
+      labels: ["Progress"]
     };
   }
 

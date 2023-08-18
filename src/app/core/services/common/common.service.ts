@@ -24,9 +24,20 @@ export class CommonService {
   }
   
   getDashboardMetrics(): Observable<ResponseType<any>> {
-    return this._http.get<ResponseType<any>>(`${environment.apiURL}/metric`);
+    let category = localStorage.getItem('category') === '' ? 'education' : localStorage.getItem('category');
+    // return this._http.get<ResponseType<any>>(`${environment.apiURL}/metric`);
     // return this._http.get<ResponseType<any>>('../../../assets/data/mock/metric.json');
-  } 
+      let url: string;
+    if (category === 'manufacturing') {
+      url = '../../../assets/data/mock/leap_metric.json';
+    } else if (category === 'education') {
+      url = '../../../assets/data/mock/metric.json';
+    } else {
+      url = '../../../assets/data/mock/metric.json';
+    }
+
+    return this._http.get<ResponseType<any>>(url);
+  }
 
   getGenrateToken(): Observable<ResponseType<any>> {
     return this._http.get<ResponseType<any>>(`${environment.apiURL}/generatejwt`);
