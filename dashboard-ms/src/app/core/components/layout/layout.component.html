@@ -19,9 +19,11 @@
                 id="font-size-increase" name="font-size-increase" #increaseFontSize>A+</button>
             <i *ngIf="role==='report_viewer'" class="fa fa-key" aria-hidden="true"
                 [routerLink]="['change-password']" matTooltip="Change Password"></i>
-            
-            <i *ngIf="!NVSK" class="fa fa-sign-out" aria-hidden="true" matTooltip="Logout" (click)="signOut()" id="signOut"
-                name="signOut"></i>
+           
+            <a href="https://leap-intelligence.tibilprojects.com/login/"> <i *ngIf="!NVSK" class="fa fa-sign-out" aria-hidden="true" matTooltip="Logout" id="signOut"
+                name="signOut"></i></a>
+            <!-- <i *ngIf="!NVSK" class="fa fa-sign-out" aria-hidden="true" matTooltip="Logout" (click)="signOut()" id="signOut"
+                name="signOut"></i> -->
             <!-- <button id="dark-mode-toggle" class="dark-mode-toggle" tabindex="0"
              title="{{resourceService?.frmelmnts?.lbl?.accessibilitytheme}}" (click)="changeTheme()"
              (keydown.enter)="changeTheme();" #darkModeToggle>

@@ -13,10 +13,10 @@ routes = [
   {
     path: '', redirectTo: `apps`, pathMatch: 'full'
   },
-  {
-    path: '',
-    loadChildren: () => import('./views/authentication/authentication.module').then(module => module.AuthenticationModule)
-  },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./views/authentication/authentication.module').then(module => module.AuthenticationModule)
+  // },
   {
     path: 'apps', component: AppsComponent,
     canActivate: [AuthGuard]
